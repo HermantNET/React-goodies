@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.StaticFilesEx;
-using System.IO;
 
-namespace LearnRedux
+namespace WebApplication1
 {
     public class Startup
     {
@@ -26,14 +28,10 @@ namespace LearnRedux
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles();
-
             app.Run(async (context) =>
             {
-                context.Response.Headers.Add("Content-Type", "text/html");
-                await context.Response.SendFileAsync(Directory.GetCurrentDirectory() + "/wwwroot/index.html");
+                await context.Response.WriteAsync("Hello World!");
             });
-
         }
     }
 }
