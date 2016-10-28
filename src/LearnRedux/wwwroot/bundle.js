@@ -69,18 +69,47 @@
 	
 	var _DisplayNames2 = _interopRequireDefault(_DisplayNames);
 	
+	var _NavBar = __webpack_require__(/*! ./Components/Present/NavBar.jsx */ 260);
+	
+	var _NavBar2 = _interopRequireDefault(_NavBar);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	// Redux
-	var store = (0, _redux.createStore)(_nameApp2.default, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); // Application Entry Point
+	// Application Entry Point
 	// Dependencies
+	var store = (0, _redux.createStore)(_nameApp2.default, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+	
+	// Components
 	
 	
-	var Wow = function Wow() {
+	// Redux
+	
+	var NotFound = function NotFound() {
 	    return _react2.default.createElement(
 	        'p',
 	        null,
-	        'Wow'
+	        '404 Page does not exist'
+	    );
+	};
+	var Cats = function Cats() {
+	    return _react2.default.createElement(
+	        'p',
+	        null,
+	        'Cats!!!!!!'
+	    );
+	};
+	var Dogs = function Dogs() {
+	    return _react2.default.createElement(
+	        'p',
+	        null,
+	        'DOG-O'
+	    );
+	};
+	var Bananas = function Bananas() {
+	    return _react2.default.createElement(
+	        'p',
+	        null,
+	        'Potassiyum ;)'
 	    );
 	};
 	
@@ -90,8 +119,14 @@
 	    _react2.default.createElement(
 	        _reactRouter.Router,
 	        { history: _reactRouter.browserHistory },
-	        _react2.default.createElement(_reactRouter.Route, { path: '/', component: _DisplayNames2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/wow', component: Wow })
+	        _react2.default.createElement(
+	            _reactRouter.Route,
+	            { path: '/', component: _NavBar2.default },
+	            _react2.default.createElement(_reactRouter.IndexRoute, { component: _DisplayNames2.default }),
+	            _react2.default.createElement(_reactRouter.Route, { path: 'Cats', component: Cats }),
+	            _react2.default.createElement(_reactRouter.Route, { path: 'Dogs', component: Dogs }),
+	            _react2.default.createElement(_reactRouter.Route, { path: 'Bananas', component: Bananas })
+	        )
 	    )
 	), document.getElementById('app'));
 
@@ -29545,6 +29580,81 @@
 	}(_react.Component);
 	
 	exports.default = NamesDisplay;
+
+/***/ },
+/* 260 */
+/*!*******************************************!*\
+  !*** ./App/Components/Present/NavBar.jsx ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 200);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var NavBar = function NavBar(props) {
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	            'ul',
+	            { className: 'navbar' },
+	            _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                    _reactRouter.IndexLink,
+	                    { activeStyle: { color: 'red' }, to: '/' },
+	                    'Home'
+	                )
+	            ),
+	            _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { activeStyle: { color: 'red' }, to: '/cats' },
+	                    'Cats'
+	                )
+	            ),
+	            _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { activeStyle: { color: 'red' }, to: '/dogs' },
+	                    'Dogs'
+	                )
+	            ),
+	            _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { activeStyle: { color: 'red' }, to: '/bananas' },
+	                    'Bananas'
+	                )
+	            )
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            { className: 'content' },
+	            props.children
+	        )
+	    );
+	};
+	
+	exports.default = NavBar;
 
 /***/ }
 /******/ ]);
